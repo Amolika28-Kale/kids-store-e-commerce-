@@ -50,7 +50,7 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/70 via-black/40 to-transparent flex items-center px-6 md:px-16">
               <div className="max-w-3xl text-white">
                 <span className="inline-block px-4 py-1 rounded-full bg-pink-500/20 backdrop-blur-md border border-pink-400/30 text-pink-200 text-sm font-medium mb-4 uppercase tracking-widest">
-                  New Arrival 2024
+                  New Arrival 2025
                 </span>
                 <h1 className="text-5xl md:text-7xl font-black leading-[1.1] drop-shadow-lg">
                   {slide.title}
