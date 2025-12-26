@@ -32,62 +32,71 @@ export default function Home() {
 
   return (
     <div className="bg-slate-50 font-sans text-slate-900">
-      {/* HERO SECTION */}
-      <section className="relative h-[90vh] overflow-hidden">
-        {slides.map((slide, i) => (
-          <div
-            key={i}
-            className={`absolute inset-0 transition-all duration-1000 ease-in-out transform ${
-              i === current ? "opacity-100 scale-105" : "opacity-0 scale-100"
-            }`}
-          >
-            <img
-              src={slide.img}
-              className="h-full w-full object-cover"
-              alt={slide.title}
-            />
-            {/* Improved Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/70 via-black/40 to-transparent flex items-center px-6 md:px-16">
-              <div className="max-w-3xl text-white">
-                <span className="inline-block px-4 py-1 rounded-full bg-pink-500/20 backdrop-blur-md border border-pink-400/30 text-pink-200 text-sm font-medium mb-4 uppercase tracking-widest">
-                  New Arrival 2025
-                </span>
-                <h1 className="text-5xl md:text-7xl font-black leading-[1.1] drop-shadow-lg">
-                  {slide.title}
-                </h1>
-                <p className="mt-6 text-lg md:text-2xl font-light opacity-90 max-w-xl leading-relaxed">
-                  {slide.subtitle}
-                </p>
+ {/* HERO SECTION */}
+<section className="relative h-[85vh] sm:h-[90vh] overflow-hidden">
+  {slides.map((slide, i) => (
+    <div
+      key={i}
+      className={`absolute inset-0 transition-all duration-1000 ease-in-out transform ${
+        i === current ? "opacity-100 scale-105" : "opacity-0 scale-100"
+      }`}
+    >
+      <img
+        src={slide.img}
+        className="h-full w-full object-cover"
+        alt={slide.title}
+      />
 
-                <div className="mt-10 flex flex-wrap gap-5">
-                  <Link
-                    to="/shop"
-                    className="bg-pink-500 hover:bg-pink-600 hover:shadow-xl hover:shadow-pink-500/40 transform hover:-translate-y-1 transition-all px-10 py-4 rounded-full text-lg font-bold"
-                  >
-                    Shop Now
-                  </Link>
-                  <Link
-                    to="/register"
-                    className="backdrop-blur-md bg-white/10 border border-white/40 hover:bg-white/20 px-10 py-4 rounded-full text-lg font-semibold transition-all"
-                  >
-                    Join Free
-                  </Link>
-                </div>
-              </div>
-            </div>
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/70 via-black/40 to-transparent flex items-center px-4 sm:px-6 md:px-16">
+        <div className="max-w-xl sm:max-w-2xl md:max-w-3xl text-white">
+          
+          <span className="inline-block px-3 sm:px-4 py-1 rounded-full bg-pink-500/20 backdrop-blur-md border border-pink-400/30 text-pink-200 text-[10px] sm:text-sm font-medium mb-3 sm:mb-4 uppercase tracking-widest">
+            New Arrival 2025
+          </span>
+
+          <h1 className="text-3xl sm:text-5xl md:text-7xl font-black leading-tight drop-shadow-lg">
+            {slide.title}
+          </h1>
+
+          <p className="mt-3 sm:mt-5 text-sm sm:text-lg md:text-2xl font-light opacity-90 max-w-md sm:max-w-xl leading-relaxed">
+            {slide.subtitle}
+          </p>
+
+          {/* CTA BUTTONS */}
+          <div className="mt-6 sm:mt-10 flex flex-col sm:flex-row gap-4 sm:gap-5">
+            <Link
+              to="/shop"
+              className="bg-pink-500 hover:bg-pink-600 hover:shadow-xl hover:shadow-pink-500/40 transform hover:-translate-y-1 transition-all px-7 sm:px-10 py-3.5 sm:py-4 rounded-full text-sm sm:text-lg font-bold text-center"
+            >
+              Shop Now
+            </Link>
+            <Link
+              to="/register"
+              className="backdrop-blur-md bg-white/10 border border-white/40 hover:bg-white/20 px-7 sm:px-10 py-3.5 sm:py-4 rounded-full text-sm sm:text-lg font-semibold text-center transition-all"
+            >
+              Join Free
+            </Link>
           </div>
-        ))}
-        {/* Slide Indicators */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3">
-          {slides.map((_, i) => (
-            <button 
-              key={i} 
-              onClick={() => setCurrent(i)}
-              className={`h-2 transition-all rounded-full ${i === current ? "w-8 bg-pink-500" : "w-2 bg-white/50"}`}
-            />
-          ))}
+
         </div>
-      </section>
+      </div>
+    </div>
+  ))}
+
+  {/* Slide Indicators */}
+  <div className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 flex gap-2 sm:gap-3">
+    {slides.map((_, i) => (
+      <button
+        key={i}
+        onClick={() => setCurrent(i)}
+        className={`h-2 rounded-full transition-all ${
+          i === current ? "w-6 sm:w-8 bg-pink-500" : "w-2 bg-white/50"
+        }`}
+      />
+    ))}
+  </div>
+</section>
 
       {/* TRUST BADGES - Clean Card Style */}
       <section className="bg-white py-12 border-b border-gray-100">

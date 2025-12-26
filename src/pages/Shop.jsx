@@ -7,6 +7,7 @@ import { getCurrentUser } from "../utils/auth";
 export default function Shop() {
   const [gender, setGender] = useState("");
   const [category, setCategory] = useState("");
+const [price, setPrice] = useState(699);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -43,11 +44,13 @@ export default function Shop() {
     toast.success("Added to wishlist ❤️");
   };
 
-  const filteredProducts = products.filter(
-    (p) =>
-      (gender ? p.gender === gender : true) &&
-      (category ? p.category === category : true)
-  );
+const filteredProducts = products.filter(
+  (p) =>
+    (gender ? p.gender === gender : true) &&
+    (category ? p.category === category : true) &&
+    p.price <= price
+);
+
 
   return (
     <div className="bg-slate-50 min-h-screen pb-20">
@@ -91,6 +94,21 @@ export default function Shop() {
             <option value="boys">Boys</option>
             <option value="girls">Girls</option>
           </select>
+          <div className="flex flex-col min-w-[180px]">
+  <label className="text-xs font-bold text-gray-600 mb-1">
+    Max Price: ₹{price}
+  </label>
+  <input
+    type="range"
+    min="299"
+    max="699"
+    step="50"
+    value={price}
+    onChange={(e) => setPrice(Number(e.target.value))}
+    className="accent-pink-500 cursor-pointer"
+  />
+</div>
+
         </div>
       </div>
 
@@ -159,7 +177,11 @@ export default function Shop() {
             <h2 className="text-2xl font-bold text-gray-800">No products found</h2>
             <p className="text-gray-500 mt-2">Try adjusting your filters to find what you're looking for.</p>
             <button 
-                onClick={() => {setGender(""); setCategory("");}}
+onClick={() => {
+  setGender("");
+  setCategory("");
+  setPrice(699);
+}}
                 className="mt-6 text-pink-500 font-bold underline"
             >
                 Clear All Filters
